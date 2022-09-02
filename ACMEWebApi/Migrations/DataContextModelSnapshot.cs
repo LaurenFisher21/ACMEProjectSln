@@ -44,6 +44,8 @@ namespace ACMEWebApi.Migrations
 
                     b.HasKey("EmployeeId");
 
+                    b.HasIndex("PersonId");
+
                     b.ToTable("Employee");
                 });
 
@@ -67,6 +69,17 @@ namespace ACMEWebApi.Migrations
                     b.HasKey("PersonId");
 
                     b.ToTable("Person");
+                });
+
+            modelBuilder.Entity("Shared.Models.Employee", b =>
+                {
+                    b.HasOne("Shared.Models.Person", "Person")
+                        .WithMany()
+                        .HasForeignKey("PersonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Person");
                 });
 #pragma warning restore 612, 618
         }

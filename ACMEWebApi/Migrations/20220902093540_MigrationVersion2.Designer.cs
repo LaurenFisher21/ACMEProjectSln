@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ACMEWebApi.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220901163124_MigrationVersion1")]
-    partial class MigrationVersion1
+    [Migration("20220902093540_MigrationVersion2")]
+    partial class MigrationVersion2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,6 +46,8 @@ namespace ACMEWebApi.Migrations
 
                     b.HasKey("EmployeeId");
 
+                    b.HasIndex("PersonId");
+
                     b.ToTable("Employee");
                 });
 
@@ -69,6 +71,17 @@ namespace ACMEWebApi.Migrations
                     b.HasKey("PersonId");
 
                     b.ToTable("Person");
+                });
+
+            modelBuilder.Entity("Shared.Models.Employee", b =>
+                {
+                    b.HasOne("Shared.Models.Person", "Person")
+                        .WithMany()
+                        .HasForeignKey("PersonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Person");
                 });
 #pragma warning restore 612, 618
         }
