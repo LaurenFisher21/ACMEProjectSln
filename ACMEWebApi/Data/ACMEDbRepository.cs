@@ -12,6 +12,8 @@ namespace ACMEWebApi.Data
             _dataContext = dataContext;
         }
 
+        #region Person
+        //Person Controller.
         public Person CreateNewPerson(Person person)
         {
             _dataContext.People.Add(person);
@@ -62,5 +64,56 @@ namespace ACMEWebApi.Data
         {
             return _dataContext.People.Any(x => x.PersonId == Id);
         }
+        #endregion
+
+
+        #region Employee
+        //Employee Controller.
+        public Employee CreateNewEmployee(Employee employee)
+        {
+            _dataContext.Employees.Add(employee);
+            _dataContext.SaveChanges();
+
+            return employee;
+        }
+
+        public Employee UpdateEmployee(Employee employee)
+        {
+            _dataContext.Update(employee);
+            _dataContext.SaveChanges();
+
+            return employee;
+        }
+
+        public Employee DeleteEmployee(Employee employee)
+        {
+            _dataContext.Remove(employee);
+            _dataContext.SaveChanges();
+
+            return null;
+        }
+
+        public bool DoesEmployeeExistById(int Id)
+        {
+            return _dataContext.Employees.Any(x => x.EmployeeId == Id);
+        }
+
+        public Employee GetEmployeeById(int Id)
+        {
+            var employee = _dataContext.Employees.Where(x => x.EmployeeId == Id).FirstOrDefault();
+            return employee;
+        }
+
+        public Employee GetEmployeeByEmpNum(string empNum)
+        {
+            var employee = _dataContext.Employees.Where(x => x.EmployeeNum == empNum).FirstOrDefault();
+            return employee;
+        }
+
+        public List<Employee> GetAllEmployees()
+        {
+            return _dataContext.Employees.ToList();
+        }
+        #endregion
     }
 }

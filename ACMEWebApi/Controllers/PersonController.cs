@@ -16,6 +16,7 @@ namespace ACMEWebApi.Controllers
             _acmeDbRepository = acmeDbRepository;
         }
 
+        #region CreatePerson
         [HttpPost]
         public IActionResult CreatePerson([FromBody] Person person)
         {
@@ -40,26 +41,34 @@ namespace ACMEWebApi.Controllers
             }
             return Ok(person);
         }
+        #endregion
 
+        #region GetAllPeople
         [HttpGet]
         public IEnumerable<Person> Get()
         {
             return _acmeDbRepository.GetAllPeople();
         }
+        #endregion
 
-        [HttpGet("byid")]
+        #region GetPersonById
+        [HttpGet("ById")]
         public Person Get([FromQuery] int Id)
         {
             return _acmeDbRepository.GetPersonById(Id);
         }
+        #endregion
 
-        [HttpGet("search")]
+        #region GetPersonByLastName
+        [HttpGet("Search")]
         public Person Get([FromQuery] string lastname)
         {
             return _acmeDbRepository.GetPersonByLastName(lastname);
         }
+        #endregion
 
-        [HttpPut("byid")]
+        #region UpdateById
+        [HttpPut("ById")]
         public IActionResult UpdatePersonById([FromQuery] Person person)
         {
             try
@@ -77,12 +86,15 @@ namespace ACMEWebApi.Controllers
             }
             return Ok(person);
         }
+        #endregion
 
-        [HttpDelete("byid")]
+        #region Delete
+        [HttpDelete("ById")]
         public Person Delete([FromQuery] int Id)
         {
             var deletePerson = _acmeDbRepository.GetPersonById(Id);
             return _acmeDbRepository.DeletePerson(deletePerson);
         }
+        #endregion
     }
 }
