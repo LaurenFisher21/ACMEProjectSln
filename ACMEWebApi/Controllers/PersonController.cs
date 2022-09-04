@@ -77,5 +77,12 @@ namespace ACMEWebApi.Controllers
             }
             return Ok(person);
         }
+
+        [HttpDelete("byid")]
+        public Person Delete([FromQuery] int Id)
+        {
+            var deletePerson = _acmeDbRepository.GetPersonById(Id);
+            return _acmeDbRepository.DeletePerson(deletePerson);
+        }
     }
 }

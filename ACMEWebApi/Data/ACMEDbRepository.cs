@@ -25,7 +25,13 @@ namespace ACMEWebApi.Data
             _dataContext.Update(person);
             _dataContext.SaveChanges();
             return person;
+        }
 
+        public Person DeletePerson(Person person)
+        {
+            _dataContext.Remove(person);
+            _dataContext.SaveChanges();
+            return null;
         }
 
         public Person GetPersonById(int Id)

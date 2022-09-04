@@ -6,6 +6,7 @@ namespace ACMEWebApi.Interfaces
     {
         public Person CreateNewPerson(Person person);
         public Person UpdatePerson(Person person);
+        public Person DeletePerson(Person person);
         public bool DoesPersonExistById(int Id);
         public Person GetPersonById(int Id);
         public Person FindPersonById(int Id);
