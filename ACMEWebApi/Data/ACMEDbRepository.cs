@@ -20,9 +20,23 @@ namespace ACMEWebApi.Data
             return person;
         }
 
+        public Person UpdatePerson(Person person)
+        {
+            _dataContext.Update(person);
+            _dataContext.SaveChanges();
+            return person;
+
+        }
+
         public Person GetPersonById(int Id)
         {
             var person = _dataContext.People.Where(x => x.PersonId == Id).FirstOrDefault();
+            return person;
+        }
+
+        public Person FindPersonById(int Id)
+        {
+            var person = _dataContext.People.Find(Id);
             return person;
         }
 

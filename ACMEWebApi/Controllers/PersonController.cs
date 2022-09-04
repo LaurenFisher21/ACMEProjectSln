@@ -34,7 +34,7 @@ namespace ACMEWebApi.Controllers
                 }
                 _acmeDbRepository.CreateNewPerson(person);
             }
-            catch
+            catch(Exception ex)
             {
                 return BadRequest("Person creation failed.");
             }
@@ -57,6 +57,25 @@ namespace ACMEWebApi.Controllers
         public Person Get([FromQuery] string lastname)
         {
             return _acmeDbRepository.GetPersonByLastName(lastname);
+        }
+
+        [HttpPut("byid")]
+        public IActionResult UpdatePersonById([FromQuery] Person person)
+        {
+            try
+            {
+                bool doesThisPersonExist = _acmeDbRepository.DoesPersonExistById(person.PersonId);
+                if(!doesThisPersonExist)
+                {
+                    return BadRequest("This person does not exist");
+                }
+                _acmeDbRepository.UpdatePerson(person);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest("Something Happened...");
+            }
+            return Ok(person);
         }
     }
 }
