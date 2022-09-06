@@ -14,16 +14,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Employee[0].EmployeeNum)
+                First Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee[0].EmployedDate)
+                Last Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee[0].Terminated)
+                Birthday
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee[0].Person.LastName)
+                Employee Number
+            </th>
+            <th>
+                Date Employed
+            </th>
+            <th>
+                Date Terminated
             </th>
             <th></th>
         </tr>
@@ -32,6 +38,15 @@
 @foreach (var item in Model.Employee) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.Person.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Person.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Person.BirthDate)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.EmployeeNum)
             </td>
             <td>
@@ -39,9 +54,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Terminated)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Person.LastName)
             </td>
             <td>
                 <a asp-page="./EmployeeData" asp-route-id="@item.EmployeeId">Edit</a> |

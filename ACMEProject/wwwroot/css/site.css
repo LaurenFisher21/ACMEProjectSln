@@ -45,3 +45,12 @@ input
     font-style: italic;
     color: #696969;
 }
+
+table thead {
+    background-color: #666666;
+    color: #e3dede;
+}
+
+table tbody {
+    background-color: #d6d6d6;
+}

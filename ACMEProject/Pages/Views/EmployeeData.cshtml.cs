@@ -31,12 +31,13 @@ namespace ACMEProject.Pages.Views
             }
 
             var employee =  await _context.Employees.FirstOrDefaultAsync(m => m.EmployeeId == id);
+
             if (employee == null)
             {
                 return NotFound();
             }
             Employee = employee;
-           ViewData["PersonId"] = new SelectList(_context.People, "PersonId", "PersonId");
+            ViewData["PersonId"] = new SelectList(_context.People, "PersonId", "PersonId");
             return Page();
         }
 
