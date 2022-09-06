@@ -1,0 +1,54 @@
+﻿@page
+@model ACMEProject.Pages.Views.DatalistModel
+
+@{
+    ViewData["Title"] = "Datalist";
+}
+
+<h1>Datalist</h1>
+
+<p>
+    <a asp-page="AddEmployee">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee[0].EmployeeNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee[0].EmployedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee[0].Terminated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee[0].Person.LastName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Employee) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Terminated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Person.LastName)
+            </td>
+            <td>
+                <a asp-page="./EmployeeData" asp-route-id="@item.EmployeeId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.EmployeeId">Details</a> |
+                <a asp-page="./DeleteEmployee" asp-route-id="@item.EmployeeId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

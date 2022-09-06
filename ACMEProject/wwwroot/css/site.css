@@ -16,3 +16,32 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.bg-gray {
+    margin: 15px 70px;
+    padding: 10px;
+    background-color: #babfbb;
+    border-radius: 30px;
+}
+
+.label-inline
+{
+    text-align: left;
+    display: block;
+    margin-left: 20px;
+}
+
+input
+{
+    width: 60%;
+    padding: 10px 20px;
+    margin: 10px;
+    display: inline-block;
+    border-radius: 35px;
+    border: solid 1px grey;
+}
+
+.ital-label {
+    font-style: italic;
+    color: #696969;
+}
