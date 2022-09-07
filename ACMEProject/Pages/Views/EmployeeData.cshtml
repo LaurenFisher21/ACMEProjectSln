@@ -5,9 +5,8 @@
     ViewData["Title"] = "EmployeeData";
 }
 
-<h1>EmployeeData</h1>
+<h1>Edit Employee</h1>
 
-<h4>Employee</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,36 +14,36 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Employee.EmployeeId" />
             <div>
-                <label asp-for="Employee.PersonId" class="control-label"></label>
+                <label asp-for="Employee.PersonId" class="control-label">Person ID: </label>
                 <select asp-for="Employee.Person.PersonId" class="form-control" asp-items="ViewBag.PersonId" disabled></select>
             </div>
             <div class="form-group">
-                <label asp-for="Employee.Person.FirstName" class="control-label"></label>
+                <label asp-for="Employee.Person.FirstName" class="control-label">First Name: </label>
                 <input asp-for="Employee.Person.FirstName" class="form-control" asp-items="ViewBag.Person.FirstName" />
                 <span asp-validation-for="Employee.Person.FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Employee.Person.LastName" class="control-label"></label>
+                <label asp-for="Employee.Person.LastName" class="control-label">Last Name: </label>
                 <input asp-for="Employee.Person.LastName" class="form-control" asp-items="ViewBag.Person.LastName" />
                 <span asp-validation-for="Employee.Person.LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Employee.Person.BirthDate" class="control-label"></label>
+                <label asp-for="Employee.Person.BirthDate" class="control-label">Birthday: </label>
                 <input asp-for="Employee.Person.BirthDate" class="form-control" asp-items="ViewBag.Person.BirthDate" />
                 <span asp-validation-for="Employee.Person.BirthDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Employee.EmployeeNum" class="control-label"></label>
+                <label asp-for="Employee.EmployeeNum" class="control-label">Employee Number: </label>
                 <input asp-for="Employee.EmployeeNum" class="form-control" />
                 <span asp-validation-for="Employee.EmployeeNum" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Employee.EmployedDate" class="control-label"></label>
+                <label asp-for="Employee.EmployedDate" class="control-label">Date Employed: </label>
                 <input asp-for="Employee.EmployedDate" class="form-control" />
                 <span asp-validation-for="Employee.EmployedDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Employee.Terminated" class="control-label"></label>
+                <label asp-for="Employee.Terminated" class="control-label">Date Terminated: </label>
                 <input asp-for="Employee.Terminated" class="form-control" />
                 <span asp-validation-for="Employee.Terminated" class="text-danger"></span>
             </div>
